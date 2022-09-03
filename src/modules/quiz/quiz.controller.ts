@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiParam, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { EventsService } from '../events/events.service';
 import { QuizEntity } from './entities/quiz.entity';
 import { QuizQuestionAnswerModel } from './models/answers.model';
 import { QuizService } from './quiz.service';
@@ -16,7 +17,10 @@ import { QuizService } from './quiz.service';
 @Controller('quiz')
 @ApiTags('quiz')
 export class QuizController {
-  constructor(private quizService: QuizService) {}
+  constructor(
+    private readonly quizService: QuizService,
+    private readonly eventsService: EventsService,
+  ) {}
 
   @Get('/:id')
   @UseGuards(JwtAuthGuard)
@@ -40,10 +44,12 @@ export class QuizController {
     @Param('id') quizId: string,
     @Request() req: any,
   ): Promise<void> {
+    const event = await this.eventsService.getEventByQuizId('eventsService');
     await this.quizService.assignQuizAnswers(
       payload,
       quizId,
       req.user.username,
+      event,
     );
   }
 }

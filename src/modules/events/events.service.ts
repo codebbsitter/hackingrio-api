@@ -31,4 +31,8 @@ export class EventsService {
       );
     return challenges;
   }
+
+  public async getEventByQuizId(id: string): Promise<EventsEntity> {
+    return this.eventsRepository.getEventByQuizId(id);
+  }
 }

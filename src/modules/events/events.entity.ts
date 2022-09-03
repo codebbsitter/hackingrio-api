@@ -31,6 +31,9 @@ export class EventsEntity {
   @Column({ name: 'sponsor_id', type: 'uuid', nullable: false })
   public sponsorId: string;
 
+  @Column({ name: 'badge_uri' })
+  public badgeUri: string;
+
   @Column({
     name: 'is_active',
     type: 'boolean',

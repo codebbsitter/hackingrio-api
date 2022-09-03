@@ -12,7 +12,7 @@ export class NFTProvider {
     this.abi = HackingBadge.abi;
   }
 
-  public async mint(to: string) {
+  public async mint(to: string, uri: string) {
     const minter = await this.ethereumProvider.loadWallet(
       process.env.PRIVATE_KEY,
     );
@@ -24,9 +24,9 @@ export class NFTProvider {
 
     const gasEstimated = await contract
       .connect(minter)
-      .estimateGas.safeMint(to);
+      .estimateGas.safeMint(to, uri);
 
-    const tx = await contract.connect(minter).safeMint(to, {
+    const tx = await contract.connect(minter).safeMint(to, uri, {
       gasLimit: gasEstimated,
     });
     const receipt = await tx.wait();

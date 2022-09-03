@@ -10,6 +10,10 @@ import { QuizRepository } from './repositories/quiz.repository';
 import { UsersService } from '../users/users.service';
 import { QuizQuestionAnswerModel } from './models/answers.model';
 import { QuizAnswersRepository } from './repositories/quiz-answers.repositories';
+import { BadgesService } from '../badges/badge.service';
+import { WalletsService } from '../blockchain/wallets.service';
+import { NFTProvider } from '../blockchain/providers/nft.provider';
+import { EventsEntity } from '../events/events.entity';
 
 @Injectable()
 export class QuizService {
@@ -19,6 +23,9 @@ export class QuizService {
     @InjectRepository(QuizAnswersRepository)
     private readonly quizAnswersRepository: QuizAnswersRepository,
     private readonly usersService: UsersService,
+    private readonly badgesService: BadgesService,
+    private readonly walletsService: WalletsService,
+    private readonly nftProvider: NFTProvider,
   ) {}
 
   public async findById(id: string): Promise<QuizEntity> {
@@ -31,6 +38,7 @@ export class QuizService {
     answers: QuizQuestionAnswerModel[],
     quizId: string,
     username: string,
+    event: EventsEntity,
   ): Promise<any> {
     const quiz = await this.findById(quizId);
     const user = await this.usersService.findUserByUsername(username);
@@ -39,10 +47,18 @@ export class QuizService {
       user,
       quiz,
     );
-    if (userHasDone)
+    if (userHasDone) {
       throw new ForbiddenException(
         'User cannot answer same quiz more than once',
       );
+    }
+
+    let wallet = await this.walletsService.findWalletByUserId(user.id);
+    if (!wallet) wallet = await this.walletsService.createWallet(user.id);
+
+    const nft = await this.nftProvider.mint(wallet.address, event.badgeUri);
+
+    await this.badgesService.createBadge(user.id, event.id, nft);
 
     let score = 0;
     answers.map((answer) => {
