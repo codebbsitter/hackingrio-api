@@ -36,15 +36,12 @@ export class QuizService {
         if(correctAnswer.id === answer.alternativeId) score++
       })
 
-      const quizAnswers = await this.quizAnswersRepository.assignQuizAnswers(
+      await this.quizAnswersRepository.assignQuizAnswers(
         answers,
         score,
         quiz,
         user
       )
-      
-      console.log(quizAnswers)
-
     }
 
     /**

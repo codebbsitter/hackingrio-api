@@ -13,7 +13,6 @@ export class QuizAnswersRepository extends Repository<QuizAnswersEntity> {
     quiz: QuizEntity,
     user: UsersEntity
   ){
-    console.log(user.id, ' AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
     const quizAnswers = await this.save({
       answers,
       score,
