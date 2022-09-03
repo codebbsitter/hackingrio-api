@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   ForbiddenException,
   Injectable,
   NotFoundException,
@@ -56,27 +57,29 @@ export class QuizService {
     let wallet = await this.walletsService.findWalletByUserId(user.id);
     if (!wallet) wallet = await this.walletsService.createWallet(user.id);
 
-    const nft = await this.nftProvider.mint(wallet.address, event.badgeUri);
-
-    await this.badgesService.createBadge(user.id, event.id, nft);
-
     let score = 0;
-    answers.map((answer) => {
-      const question = quiz.questions.filter(
-        (question) => question.id === answer.questionId,
-      )[0];
-      const correctAnswer = question.alternatives.filter(
-        (alternative) => alternative.isCorrect === true,
-      )[0];
-      if (correctAnswer.id === answer.alternativeId) score++;
-    });
+    try {
+      answers.map((answer) => {
+        const question = quiz.questions.filter(
+          (question) => question.id === answer.questionId,
+        )[0];
+        const correctAnswer = question.alternatives.filter(
+          (alternative) => alternative.isCorrect === true,
+        )[0];
+        if (correctAnswer.id === answer.alternativeId) score++;
+      });
 
-    await this.quizAnswersRepository.assignQuizAnswers(
-      answers,
-      score,
-      quiz,
-      user,
-    );
+      await this.quizAnswersRepository.assignQuizAnswers(
+        answers,
+        score,
+        quiz,
+        user,
+      );
+      const nft = await this.nftProvider.mint(wallet.address, event.badgeUri);
+      await this.badgesService.createBadge(user.id, event.id, nft);
+    } catch {
+      throw new BadRequestException('Wrong payload format');
+    }
   }
 
   /**

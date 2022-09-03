@@ -44,7 +44,7 @@ export class QuizController {
     @Param('id') quizId: string,
     @Request() req: any,
   ): Promise<void> {
-    const event = await this.eventsService.getEventByQuizId('eventsService');
+    const event = await this.eventsService.getEventByQuizId(quizId);
     await this.quizService.assignQuizAnswers(
       payload,
       quizId,

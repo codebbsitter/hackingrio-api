@@ -14,8 +14,8 @@ export class EventsRepository extends Repository<EventsEntity> {
   }
   public async getEventByQuizId(quizId: string): Promise<EventsEntity> {
     return this.createQueryBuilder('event')
-      .innerJoin('events_challenges', 'ec', 'event.id = ec.event_id')
-      .innerJoin('quiz', 'qz', 'qz.id = ev.challenge_id')
+      .innerJoin('event-challenges', 'ec', 'event.id = ec.event_id')
+      .innerJoin('quiz', 'qz', 'qz.id = ec.challenge_id')
       .where('qz.id = :quizId', { quizId })
       .getOne();
   }
