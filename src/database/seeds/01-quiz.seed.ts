@@ -1,8 +1,8 @@
-import { QuizEntity } from '../../modules/quiz/quiz.entity';
+import { QuizEntity } from '../../modules/quiz/entities/quiz.entity';
 import { Connection } from 'typeorm';
 import { Factory, Seeder } from 'typeorm-seeding';
 
-export default class Quiz implements Seeder {
+export default class QuizSeed implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<void> {
     await connection
       .createQueryBuilder()
@@ -15,6 +15,7 @@ export default class Quiz implements Seeder {
           description: 'Teste seus conhecimentos a cerca da exposição de Van Gogh',
           questions: [
             {
+              id: 1,
               title: 'Quantas versões de "Quarto em Arles", Van Gogh pintou?',
               alternatives: [
                 {
@@ -40,6 +41,7 @@ export default class Quiz implements Seeder {
               ]
             },
             {
+              id: 2,
               title: 'Quando foi pintado "Os comedores de batata"?',
               alternatives: [
                 {
@@ -65,6 +67,7 @@ export default class Quiz implements Seeder {
               ]
             },
             {
+              id: 3,
               title: 'Em qual movimento artistico se encaixa Van Gogh?',
               alternatives: [
                 {

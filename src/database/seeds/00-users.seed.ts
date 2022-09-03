@@ -2,7 +2,7 @@ import { Connection } from 'typeorm';
 import { Factory, Seeder } from 'typeorm-seeding';
 import { UsersEntity } from '../../modules/users/users.entity';
 
-export default class Users implements Seeder {
+export default class UsersSeed implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<void> {
     await connection
       .createQueryBuilder()
