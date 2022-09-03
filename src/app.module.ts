@@ -8,6 +8,7 @@ import { UsersModule } from './modules/users/users.module';
 import { QuizModule } from './modules/quiz/quiz.module';
 import { EventsModule } from './modules/events/events.module';
 import { CompaniesModule } from './modules/companies/companies.module';
+import { BlockchainModule } from './modules/blockchain/blockchain.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { CompaniesModule } from './modules/companies/companies.module';
     QuizModule,
     EventsModule,
     CompaniesModule,
+    BlockchainModule,
   ],
   controllers: [AppController],
   providers: [AppService],
