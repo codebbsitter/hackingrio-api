@@ -9,7 +9,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { QuizAnswersEntity } from '../quiz/entities/quiz-answers.entity';
-import { WalletsEntity } from '../wallets/wallet.entity';
+import { WalletsEntity } from '../blockchain/wallets.entity';
 
 @Entity('users')
 export class UsersEntity {
