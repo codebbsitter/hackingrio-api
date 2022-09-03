@@ -1,4 +1,5 @@
 export interface QuizQuestionModel {
+  id: number,
   title: string,
   alternatives: QuizAlternativeQuestionModel[]
 }

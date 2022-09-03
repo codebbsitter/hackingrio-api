@@ -1,4 +1,5 @@
-import { Column, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { QuizAnswersEntity } from "../quiz/entities/quiz-answers.entity";
 
 @Entity('users')
 export class UsersEntity {
@@ -19,4 +20,10 @@ export class UsersEntity {
   
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz', nullable: true })
     public updatedAt: Date;
+
+    @OneToMany(
+        () => QuizAnswersEntity,
+        quizAnswer => quizAnswer.user
+    )
+    quizAnswers: QuizAnswersEntity[]
 }
