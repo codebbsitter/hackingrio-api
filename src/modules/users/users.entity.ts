@@ -5,8 +5,11 @@ import {
   UpdateDateColumn,
   PrimaryGeneratedColumn,
   OneToMany,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { QuizAnswersEntity } from '../quiz/entities/quiz-answers.entity';
+import { WalletsEntity } from '../wallets/wallet.entity';
 
 @Entity('users')
 export class UsersEntity {
@@ -18,6 +21,9 @@ export class UsersEntity {
 
   @Column({ name: 'password', type: 'varchar', nullable: false })
   public password: string;
+
+  @Column({ name: 'wallet_id', type: 'uuid', nullable: true })
+  public walletId: string;
 
   @Column({
     name: 'is_active',
@@ -35,4 +41,8 @@ export class UsersEntity {
 
   @OneToMany(() => QuizAnswersEntity, (quizAnswer) => quizAnswer.user)
   quizAnswers: QuizAnswersEntity[];
+
+  @OneToOne(() => WalletsEntity, (wallet) => wallet.user)
+  @JoinColumn({ name: 'wallet_id' })
+  wallet: WalletsEntity;
 }
