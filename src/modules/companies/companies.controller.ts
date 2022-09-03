@@ -6,18 +6,13 @@ import { CompaniesService } from './companies.service';
 @Controller('companies')
 @ApiTags('companies')
 export class CompaniesController {
-
-  constructor(
-    private companiesService: CompaniesService
-  ) {}
+  constructor(private companiesService: CompaniesService) {}
 
   @Get('/:id')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
-  public async getCompany(
-    @Param('id') id: string
-  ): Promise<CompaniesEntity> {
-    const company = await this.companiesService.findById(id)
-    return company
+  public async getCompany(@Param('id') id: string): Promise<CompaniesEntity> {
+    const company = await this.companiesService.findById(id);
+    return company;
   }
 }

@@ -1,6 +1,15 @@
-import { Column, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, OneToMany, ManyToOne, JoinColumn } from "typeorm";
-import { CompaniesEntity } from "../companies/companies.entity";
-import { EventChallengesEntity } from "./event-challenges.entity";
+import {
+  Column,
+  Entity,
+  CreateDateColumn,
+  UpdateDateColumn,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
+import { CompaniesEntity } from '../companies/companies.entity';
+import { EventChallengesEntity } from './event-challenges.entity';
 
 @Entity('events')
 export class EventsEntity {
@@ -8,10 +17,10 @@ export class EventsEntity {
   public id: string;
 
   @Column({ nullable: false })
-  public title: string
+  public title: string;
 
   @Column({ type: 'text', nullable: false })
-  public description: string
+  public description: string;
 
   @Column({ name: 'metaverse_link', nullable: false })
   public metaverseLink: string;
@@ -20,9 +29,14 @@ export class EventsEntity {
   public finished_at: Date;
 
   @Column({ name: 'sponsor_id', type: 'uuid', nullable: false })
-  public sponsorId: string
+  public sponsorId: string;
 
-  @Column({ name: 'is_active', type: 'boolean', default: true, nullable: false })
+  @Column({
+    name: 'is_active',
+    type: 'boolean',
+    default: true,
+    nullable: false,
+  })
   public isActive: boolean;
 
   @CreateDateColumn({ name: 'created_at', type: 'timestamptz' })
@@ -31,16 +45,10 @@ export class EventsEntity {
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz', nullable: true })
   public updatedAt: Date;
 
-  @ManyToOne(
-    () => CompaniesEntity,
-    company => company.sponsoredEvents
-  )
+  @ManyToOne(() => CompaniesEntity, (company) => company.sponsoredEvents)
   @JoinColumn({ name: 'sponsor_id' })
-  sponsor: CompaniesEntity
+  sponsor: CompaniesEntity;
 
-  @OneToMany(
-    () => EventChallengesEntity,
-    challenge => challenge.event
-  )
-  challenges: EventChallengesEntity[]
+  @OneToMany(() => EventChallengesEntity, (challenge) => challenge.event)
+  challenges: EventChallengesEntity[];
 }

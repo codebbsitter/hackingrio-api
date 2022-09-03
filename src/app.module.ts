@@ -1,13 +1,13 @@
-import { Module } from '@nestjs/common'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
-import { TypeOrmModule } from '@nestjs/typeorm'
-import { typeormConfig } from './configs/typeorm.config'
-import { AuthModule } from './modules/auth/auth.module'
-import { UsersModule } from './modules/users/users.module'
-import { QuizModule } from './modules/quiz/quiz.module'
-import { EventsModule } from './modules/events/events.module'
-import { CompaniesModule } from './modules/companies/companies.module'
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { typeormConfig } from './configs/typeorm.config';
+import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
+import { QuizModule } from './modules/quiz/quiz.module';
+import { EventsModule } from './modules/events/events.module';
+import { CompaniesModule } from './modules/companies/companies.module';
 
 @Module({
   imports: [
@@ -16,7 +16,7 @@ import { CompaniesModule } from './modules/companies/companies.module'
     AuthModule,
     QuizModule,
     EventsModule,
-    CompaniesModule
+    CompaniesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

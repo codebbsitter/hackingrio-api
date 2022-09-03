@@ -9,10 +9,11 @@ export default class QuizSeed implements Seeder {
       .insert()
       .into(QuizEntity)
       .values([
-        { 
+        {
           id: '944ce490-ed9a-4e32-9cd1-2e89d0f009c1',
           title: 'Exposição de Van Gogh',
-          description: 'Teste seus conhecimentos a cerca da exposição de Van Gogh',
+          description:
+            'Teste seus conhecimentos a cerca da exposição de Van Gogh',
           questions: [
             {
               id: 1,
@@ -21,24 +22,24 @@ export default class QuizSeed implements Seeder {
                 {
                   id: 1,
                   title: '2',
-                  isCorrect: false
+                  isCorrect: false,
                 },
                 {
                   id: 2,
                   title: '3',
-                  isCorrect: true
+                  isCorrect: true,
                 },
                 {
                   id: 3,
                   title: '1',
-                  isCorrect: false
+                  isCorrect: false,
                 },
                 {
                   id: 4,
                   title: '4',
-                  isCorrect: false
+                  isCorrect: false,
                 },
-              ]
+              ],
             },
             {
               id: 2,
@@ -47,24 +48,24 @@ export default class QuizSeed implements Seeder {
                 {
                   id: 1,
                   title: '1880',
-                  isCorrect: false
+                  isCorrect: false,
                 },
                 {
                   id: 2,
                   title: '1885',
-                  isCorrect: true
+                  isCorrect: true,
                 },
                 {
                   id: 3,
                   title: '1887',
-                  isCorrect: false
+                  isCorrect: false,
                 },
                 {
                   id: 4,
                   title: '1882',
-                  isCorrect: false
+                  isCorrect: false,
                 },
-              ]
+              ],
             },
             {
               id: 3,
@@ -73,24 +74,24 @@ export default class QuizSeed implements Seeder {
                 {
                   id: 1,
                   title: 'Expressionismo',
-                  isCorrect: false
+                  isCorrect: false,
                 },
                 {
                   id: 2,
                   title: 'Pós-expressionismo',
-                  isCorrect: true
+                  isCorrect: true,
                 },
                 {
                   id: 3,
                   title: 'Vanguarda',
-                  isCorrect: false
+                  isCorrect: false,
                 },
                 {
                   id: 4,
                   title: 'Clássico',
-                  isCorrect: false
+                  isCorrect: false,
                 },
-              ]
+              ],
             },
           ],
           finished_at: '2022-09-10T12:00:00',

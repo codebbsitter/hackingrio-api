@@ -1,8 +1,8 @@
-import { ApiProperty } from "@nestjs/swagger"
+import { ApiProperty } from '@nestjs/swagger';
 
 export class QuizQuestionAnswerModel {
   @ApiProperty()
-  public questionId: number
+  public questionId: number;
   @ApiProperty()
-  public alternativeId: number
+  public alternativeId: number;
 }

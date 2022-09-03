@@ -7,17 +7,13 @@ import { AuthGuard } from '@nestjs/passport';
 @Controller('auth')
 @ApiTags('auth')
 export class AuthController {
-  constructor(
-    private authService: AuthService
-  ){}
-  
+  constructor(private authService: AuthService) {}
+
   @UseGuards(AuthGuard('local'))
   @Post('/login')
   @ApiBody({ type: LoginDto })
-  public async login(
-    @Body() payload: LoginDto
-  ): Promise<string> {
-    const token = await this.authService.login(payload)
-    return token
+  public async login(@Body() payload: LoginDto): Promise<string> {
+    const token = await this.authService.login(payload);
+    return token;
   }
 }

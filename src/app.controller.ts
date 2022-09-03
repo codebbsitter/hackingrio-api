@@ -6,7 +6,6 @@ export class AppController {
 
   @Get('/status')
   public async status() {
-    return `Ok, ${new Date()}`
+    return `Ok, ${new Date()}`;
   }
-
 }

@@ -1,3 +1,3 @@
 export enum ChallengeTypes {
-  QUIZ = 'quiz'
+  QUIZ = 'quiz',
 }

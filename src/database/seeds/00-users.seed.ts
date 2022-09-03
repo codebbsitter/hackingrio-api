@@ -9,10 +9,10 @@ export default class UsersSeed implements Seeder {
       .insert()
       .into(UsersEntity)
       .values([
-        { 
+        {
           id: 'c7c6aedd-ef12-40b6-addd-c0acc5c336b1',
           username: 'hackingrio',
-          password: 'blockchain'
+          password: 'blockchain',
         },
       ])
       .execute();
