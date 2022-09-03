@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post, UseGuards, Request, Param } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiParam, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { EventChallengesEntity } from './event-challenges.entity';
 import { EventsEntity } from './events.entity';
@@ -24,6 +24,11 @@ export class EventsController {
   @Get('/challenges/:id')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
+  @ApiParam({
+    name: 'id',
+    type: 'string',
+    example: '2df7bfca-cfaa-4206-85ed-d9c430d243ae'
+  })
   public async getEventChallenges(
     @Param('id') id: string
   ): Promise<EventChallengesEntity[]> {
