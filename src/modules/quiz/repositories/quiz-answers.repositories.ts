@@ -21,4 +21,14 @@ export class QuizAnswersRepository extends Repository<QuizAnswersEntity> {
     })
     return quizAnswers
   }
+
+  public async findByUserAndQuiz(user: UsersEntity, quiz: QuizEntity): Promise<QuizAnswersEntity> {
+    const quizAnswers = await this.findOne({
+      where: {
+        user,
+        quiz
+      }
+    })
+    return quizAnswers
+  }
 }

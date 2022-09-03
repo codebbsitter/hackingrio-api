@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { ForbiddenException, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { QuizAlternativeQuestionModel } from "./models/questions.model";
 import { QuizEntity } from "./entities/quiz.entity";
@@ -28,6 +28,9 @@ export class QuizService {
     public async assignQuizAnswers(answers: QuizQuestionAnswerModel[], quizId: string, username: string): Promise<any> {
       const quiz = await this.findById(quizId)
       const user = await this.usersService.findUserByUsername(username)
+      
+      const userHasDone = await this.quizAnswersRepository.findByUserAndQuiz(user, quiz)
+      if(userHasDone) throw new ForbiddenException('User cannot answer same quiz more than once')
 
       let score = 0
       answers.map((answer) => {
