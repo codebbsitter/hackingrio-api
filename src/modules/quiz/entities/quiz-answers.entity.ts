@@ -15,10 +15,10 @@ export class QuizAnswersEntity {
   public score: number
 
   @Column({ name: 'user_id', type: 'uuid', nullable: false })
-  userId: string
+  public userId: string
 
   @Column({ name: 'quiz_id', type: 'uuid', nullable: false })
-  quizId: string
+  public quizId: string
 
   @Column({ name: 'is_active', type: 'boolean', default: true, nullable: false })
   public isActive: boolean;

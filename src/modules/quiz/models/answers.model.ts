@@ -1,4 +1,8 @@
-export interface QuizQuestionAnswerModel {
-  questionId: number,
-  alternativeId: number
+import { ApiProperty } from "@nestjs/swagger"
+
+export class QuizQuestionAnswerModel {
+  @ApiProperty()
+  public questionId: number
+  @ApiProperty()
+  public alternativeId: number
 }
