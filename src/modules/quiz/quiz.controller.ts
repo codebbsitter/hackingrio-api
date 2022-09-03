@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post, UseGuards, Request, Param } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { QuizEntity } from './quiz.entity';
+import { QuizEntity } from './entities/quiz.entity';
 import { QuizService } from './quiz.service';
 
 @Controller('quiz')
