@@ -1,4 +1,3 @@
-import { QuizEntity } from '../../modules/quiz/entities/quiz.entity';
 import { Connection } from 'typeorm';
 import { Factory, Seeder } from 'typeorm-seeding';
 import { QuizAnswersEntity } from '../../modules/quiz/entities/quiz-answers.entity';

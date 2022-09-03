@@ -6,6 +6,8 @@ import { typeormConfig } from './configs/typeorm.config'
 import { AuthModule } from './modules/auth/auth.module'
 import { UsersModule } from './modules/users/users.module'
 import { QuizModule } from './modules/quiz/quiz.module'
+import { EventsModule } from './modules/events/events.module'
+import { CompaniesModule } from './modules/companies/companies.module'
 
 @Module({
   imports: [
@@ -13,6 +15,8 @@ import { QuizModule } from './modules/quiz/quiz.module'
     UsersModule,
     AuthModule,
     QuizModule,
+    EventsModule,
+    CompaniesModule
   ],
   controllers: [AppController],
   providers: [AppService],

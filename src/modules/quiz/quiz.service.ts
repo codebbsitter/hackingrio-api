@@ -5,7 +5,6 @@ import { QuizEntity } from "./entities/quiz.entity";
 import { QuizRepository } from "./repositories/quiz.repository";
 import { UsersService } from "../users/users.service";
 import { QuizQuestionAnswerModel } from "./models/answers.model";
-import { QuizAnswersEntity } from "./entities/quiz-answers.entity";
 import { QuizAnswersRepository } from "./repositories/quiz-answers.repositories";
 
 @Injectable()
@@ -28,7 +27,7 @@ export class QuizService {
     public async assignQuizAnswers(answers: QuizQuestionAnswerModel[], quizId: string, username: string): Promise<any> {
       const quiz = await this.findById(quizId)
       const user = await this.usersService.findUserByUsername(username)
-      
+
       const userHasDone = await this.quizAnswersRepository.findByUserAndQuiz(user, quiz)
       if(userHasDone) throw new ForbiddenException('User cannot answer same quiz more than once')
 

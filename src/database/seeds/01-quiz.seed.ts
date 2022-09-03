@@ -93,7 +93,7 @@ export default class QuizSeed implements Seeder {
               ]
             },
           ],
-          finished_at: new Date()
+          finished_at: '2022-09-10T12:00:00',
         },
       ])
       .execute();
