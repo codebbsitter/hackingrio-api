@@ -8,7 +8,7 @@ export class addBadgeEntity1662244060503 implements MigrationInterface {
         await queryRunner.query(`CREATE INDEX "badge_user_id_index" ON "badges" ("user_id") `);
         await queryRunner.query(`CREATE UNIQUE INDEX "badge_tx_idx" ON "badges" ("tx") `);
         await queryRunner.query(`CREATE UNIQUE INDEX "badge_nft_idx" ON "badges" ("nftid") `);
-        await queryRunner.query(`ALTER TABLE "events" ADD "badge_uri" character varying NOT NULL`);
+        await queryRunner.query(`ALTER TABLE "events" ADD "badge_uri" character varying`);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
