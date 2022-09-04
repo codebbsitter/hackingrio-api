@@ -26,13 +26,16 @@ export class EventsEntity {
   public metaverseLink: string;
 
   @Column({ name: 'finished_at', type: 'timestamptz', nullable: false })
-  public finished_at: Date;
+  public finishedAt: Date;
 
   @Column({ name: 'sponsor_id', type: 'uuid', nullable: false })
   public sponsorId: string;
 
   @Column({ name: 'badge_uri' })
   public badgeUri: string;
+
+  @Column({ name: 'banner_url' })
+  public bannerUrl: string;
 
   @Column({
     name: 'is_active',
