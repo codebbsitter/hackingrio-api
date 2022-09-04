@@ -31,10 +31,10 @@ export class EventsEntity {
   @Column({ name: 'sponsor_id', type: 'uuid', nullable: false })
   public sponsorId: string;
 
-  @Column({ name: 'badge_uri' })
+  @Column({ name: 'badge_uri', nullable: true })
   public badgeUri: string;
 
-  @Column({ name: 'banner_url' })
+  @Column({ name: 'banner_url', nullable: true })
   public bannerUrl: string;
 
   @Column({
