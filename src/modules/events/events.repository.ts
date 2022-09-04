@@ -7,7 +7,7 @@ export class EventsRepository extends Repository<EventsEntity> {
     const events = this.find({
       where: {
         isActive: true,
-        finished_at: MoreThan(new Date()),
+        finishedAt: MoreThan(new Date()),
       },
     });
     return events;

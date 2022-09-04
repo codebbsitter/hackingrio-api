@@ -24,7 +24,7 @@ export class QuizEntity {
   public questions: QuizQuestionModel[];
 
   @Column({ name: 'finished_at', type: 'timestamptz', nullable: false })
-  public finished_at: Date;
+  public finishedAt: Date;
 
   @Column({
     name: 'is_active',
